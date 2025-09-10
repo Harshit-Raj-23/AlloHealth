@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import connectDB from './db/db.js';
+import seedFrontDeskUser from "./db/seedFrontDeskUser.js";
 import app from "./app.js";
 
 dotenv.config({
@@ -7,6 +8,7 @@ dotenv.config({
 });
 
 await connectDB();
+await seedFrontDeskUser()
 
 const port = process.env.PORT || 5000;
 
