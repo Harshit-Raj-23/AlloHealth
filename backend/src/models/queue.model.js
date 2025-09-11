@@ -25,7 +25,6 @@ const queueSchema = new Schema(
         },
         queueNumber: {
             type: Number,
-            required: true
         },
         status: {
             type: String,

@@ -44,9 +44,12 @@ const getQueue = asyncHandler(async (req, res) => {
 const updateQueue = asyncHandler(async (req, res) => {
     const queueEntry = await Queue.findByIdAndUpdate(
         req.params.id,
-        req.body,
         {
-            new: true
+            $set: { status: req.body.status }
+        },
+        {
+            new: true,
+            runValidators: true
         }
     );
 
