@@ -28,6 +28,7 @@ import userRoute from "./routes/user.routes.js";
 import doctorRoute from "./routes/doctor.routes.js";
 import patientRoute from "./routes/patient.routes.js";
 import appointmentRoute from "./routes/appointment.routes.js";
+import queueRoute from "./routes/queue.routes.js";
 
 
 // routes declaration
@@ -35,6 +36,7 @@ app.use("/api/v1/users", userRoute);
 app.use("/api/v1/doctors", doctorRoute);
 app.use("/api/v1/patients", patientRoute);
 app.use("/api/v1/appointments", appointmentRoute);
+app.use("/api/v1/queue", queueRoute);
 
 
 export default app;
