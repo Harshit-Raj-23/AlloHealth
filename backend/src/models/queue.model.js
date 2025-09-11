@@ -15,7 +15,7 @@ const counterSchema = new Schema(
     }
 );
 
-const Counter = mongoose.models("Counter", counterSchema);
+const Counter = mongoose.model("Counter", counterSchema);
 
 const queueSchema = new Schema(
     {
@@ -43,7 +43,7 @@ const queueSchema = new Schema(
 );
 
 // Pre-save hook to generate queueNumber automatically
-queueSchema.pre("save", async (next) => {
+queueSchema.pre("save", async function(next) {
     if (this.queueNumber) {
         return next();
     }

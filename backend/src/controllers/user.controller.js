@@ -5,6 +5,8 @@ import { User } from "../models/user.model.js";
 import { options } from "../constants.js";
 import jwt from "jsonwebtoken";
 
+
+// Generating access and refresh token
 const generateAccessAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId);
@@ -23,6 +25,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 }
 
 
+// Login user
 const loginUser = asyncHandler( async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -65,6 +68,7 @@ const loginUser = asyncHandler( async (req, res) => {
 });
 
 
+// Logout user
 const logoutUser = asyncHandler( async (req, res) => {
     await User.findByIdAndUpdate(
         req.user._id,
@@ -92,6 +96,7 @@ const logoutUser = asyncHandler( async (req, res) => {
 });
 
 
+// Refreshing tokens
 const refreshAccessToken = asyncHandler( async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
 
