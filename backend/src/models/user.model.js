@@ -18,6 +18,9 @@ const userSchema = new Schema(
             type: String,
             enum: ["frontdesk", "admin"],
             default: "frontdesk"
+        },
+        refreshToken: {
+            type: String
         }
     },
     {
@@ -27,7 +30,7 @@ const userSchema = new Schema(
 
 
 // Hashing password before saving 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function(next) {
     if (!this.isModified("password")) {
         return next();
     }
@@ -37,13 +40,13 @@ userSchema.pre("save", async (next) => {
 
 
 // Creating method isPasswordCorrect
-userSchema.methods.isPasswordCorrect() = async (enteredPassword) => {
+userSchema.methods.isPasswordCorrect = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
 
 
 // Creating method generateAccessToken
-userSchema.methods.generateAccessToken = async () => {
+userSchema.methods.generateAccessToken = function() {
     return jwt.sign(
         {
             _id: this._id,
@@ -58,7 +61,7 @@ userSchema.methods.generateAccessToken = async () => {
 
 
 // Creating method generateRefreshToken
-userSchema.methods.generateRefreshToken =async () => {
+userSchema.methods.generateRefreshToken = function() {
     return jwt.sign(
         {
             _id: this._id
