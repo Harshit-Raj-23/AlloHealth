@@ -7,6 +7,7 @@ import Layout from "./Layout.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Doctors from "./pages/Doctors.jsx";
 import Patients from "./pages/Patients.jsx";
+import Appointments from "./pages/Appointments.jsx";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                     }
                 >
                     <Route index element={<Dashboard />} />
+                    <Route path="appointments" element={<Appointments />} />
                     <Route path="doctors" element={<Doctors />} />
                     <Route path="patients" element={<Patients />} />
                 </Route>
