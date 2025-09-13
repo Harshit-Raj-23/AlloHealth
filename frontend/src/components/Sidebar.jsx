@@ -5,7 +5,7 @@ const Sidebar = () => {
     const location = useLocation();
 
     return (
-        <aside className="w-64 bg-white border-r p-6 flex flex-col">
+        <aside className="w-64 bg-white border-r p-6 flex flex-col fixed h-full">
             <div className="flex items-center gap-3 mb-10">
                 <div className="bg-blue-600 rounded h-10 w-10 flex items-center justify-center">
                     {/* Logo Icon */}

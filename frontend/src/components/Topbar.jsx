@@ -50,7 +50,7 @@ const Topbar = () => {
     }, [isAuthenticated, navigate]);
 
     return (
-        <header className="bg-white border-b flex items-center justify-between px-8 py-4">
+        <header className="bg-white border-b flex items-center justify-between px-8 py-4 fixed w-full z-10">
             {/* Search bar */}
             <div className="flex-1 max-w-lg">
                 <input
