@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/Login.jsx";
 import Layout from "./Layout.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Doctors from "./pages/Doctors.jsx";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                     }
                 >
                     <Route index element={<Dashboard />} />
+                    <Route path="doctors" element={<Doctors />} />
                 </Route>
             </Routes>
             <ToastContainer position="bottom-right" />
