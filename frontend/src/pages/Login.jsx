@@ -1,32 +1,35 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext.jsx";
 import { login } from "../api/auth.js";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const navigateTo = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true);
+
         try {
-            const data = await login(username, password);
-            toast.success(data.message);
+            const apiResp = await login(username, password);
+
+            setUser(apiResp?.data?.user);
             setIsAuthenticated(true);
+
+            toast.success(apiResp.message);
             navigateTo("/");
         } catch (error) {
             toast.error(error.response?.data?.message || "Login failed");
+        } finally {
+            setLoading(false);
         }
     };
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigateTo("/");
-        }
-    }, [isAuthenticated, navigateTo]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-blue-50">
@@ -138,9 +141,10 @@ const Login = () => {
                 {/* Sign In Button */}
                 <button
                     type="submit"
+                    disabled={loading}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-2 text-base transition mb-5"
                 >
-                    Sign In
+                    {loading ? "Signing In..." : "Sign In"}
                 </button>
             </form>
         </div>

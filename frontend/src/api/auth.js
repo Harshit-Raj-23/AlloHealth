@@ -11,6 +11,14 @@ export const login = async (username, password) => {
 };
 
 /**
+ * LoggedInUser
+ */
+export const loggedInUser = async () => {
+    const res = await api.get("/users/me");
+    return res.data;
+};
+
+/**
  * Logout
  */
 export const logout = async () => {
