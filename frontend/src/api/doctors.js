@@ -1,4 +1,4 @@
-import api from "../utils/api";
+import api from "../utils/api.js";
 
 // Fetch all doctors (with optional filters)
 export const fetchDoctors = async (filters = {}) => {
