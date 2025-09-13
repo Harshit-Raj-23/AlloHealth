@@ -1,14 +1,26 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Login from "./pages/Login.jsx";
 import Layout from "./Layout.jsx";
 
 const App = () => {
     return (
-        <Routes>
-            <Route path="login" element={<Login />} />
-            <Route path="/" element={<Layout />}></Route>
-        </Routes>
+        <>
+            <Routes>
+                <Route path="login" element={<Login />}></Route>
+                <Route
+                    path="/"
+                    element={
+                        <ProtectedRoute>
+                            <Layout />
+                        </ProtectedRoute>
+                    }
+                />
+            </Routes>
+            <ToastContainer position="bottom-right" />
+        </>
     );
 };
 
