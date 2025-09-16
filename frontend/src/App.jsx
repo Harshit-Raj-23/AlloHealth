@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Doctors from "./pages/Doctors.jsx";
 import Patients from "./pages/Patients.jsx";
 import Appointments from "./pages/Appointments.jsx";
+import Queue from "./pages/QueueManagement.jsx";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                     }
                 >
                     <Route index element={<Dashboard />} />
+                    <Route path="queue" element={<Queue />} />
                     <Route path="appointments" element={<Appointments />} />
                     <Route path="doctors" element={<Doctors />} />
                     <Route path="patients" element={<Patients />} />
