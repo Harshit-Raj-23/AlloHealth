@@ -47,7 +47,7 @@ const List = ({ appointments: initialAppointments, loading }) => {
     return (
         <div className="bg-white border rounded-xl p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Today's Appointments
+                Appointments
             </h2>
             <ul className="flex flex-col gap-4 mt-4">
                 {appointments.map((a) => (
