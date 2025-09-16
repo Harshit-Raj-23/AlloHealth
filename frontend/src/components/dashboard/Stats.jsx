@@ -10,22 +10,22 @@ const Stats = ({ stats = {} }) => {
         {
             title: "Today's Queue",
             value: queueCount,
-            subtitle: "Patients waiting",
+            color: "gray",
         },
         {
             title: "Appointments",
             value: appointmentsCount,
-            subtitle: "Scheduled today",
+            color: "yellow",
         },
         {
             title: "Completed",
             value: completedCount,
-            subtitle: "Patients served",
+            color: "green",
         },
         {
             title: "Available Doctors",
             value: doctorsCount,
-            subtitle: "Currently on duty",
+            color: "blue",
         },
     ];
 
@@ -36,13 +36,12 @@ const Stats = ({ stats = {} }) => {
                     key={idx}
                     className="bg-white border rounded-lg py-4 px-6 flex flex-col gap-2 justify-between"
                 >
-                    <div className="flex items-center mb-2 font-semibold">
+                    <div className="flex items-center mb-2 font-semibold text-gray-600">
                         {it.title}
                     </div>
-                    <div className="text-3xl font-bold text-gray-800">
+                    <div className={`text-3xl font-bold text-${it.color}-500`}>
                         {it.value}
                     </div>
-                    <div className="text-sm text-gray-400">{it.subtitle}</div>
                 </div>
             ))}
         </div>
